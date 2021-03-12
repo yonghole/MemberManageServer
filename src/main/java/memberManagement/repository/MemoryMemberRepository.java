@@ -5,7 +5,7 @@ import memberManagement.domain.Member;
 import java.util.*;
 
 
-// 아직 디비가 없다는 가정이 껴있기 때문에 이 클래스가 디비의 역할을 한다. 
+// 아직 디비가 없다는 가정이 껴있기 때문에 이 클래스가 디비의 역할을 한다.
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long,Member> store = new HashMap<>();
@@ -35,6 +35,11 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public List<Member> findAll() {
+        // store에 저장된 모든 값을 다 반환한다.
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore(){
+        store.clear();
     }
 }
