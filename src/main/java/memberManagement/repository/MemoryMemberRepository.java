@@ -1,11 +1,13 @@
 package memberManagement.repository;
 
 import memberManagement.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 
 // 아직 디비가 없다는 가정이 껴있기 때문에 이 클래스가 디비의 역할을 한다.
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long,Member> store = new HashMap<>();
