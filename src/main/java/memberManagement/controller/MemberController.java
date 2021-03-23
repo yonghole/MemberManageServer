@@ -4,9 +4,12 @@ import memberManagement.Service.MemberService;
 import memberManagement.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -36,13 +39,19 @@ public class MemberController {
     @PostMapping("/members/new")
     public String create(test t){
         Member member = new Member();
-        member.setName(t.getName());
+        member.setName(t.getNamerr());
         System.out.println(member.getName());
-        System.out.println(t.getName());
+        System.out.println(t.getNamerr());
 
         memberService.join(member);
 
         return "redirect:/";
     }
 
+    @GetMapping("/members")
+    public String list(Model model){
+        List<Member> members = memberService.findMembers();
+        model.addAttribute("members",members);
+        return "members/memberList";
+    }
 }
