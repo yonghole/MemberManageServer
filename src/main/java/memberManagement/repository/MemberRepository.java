@@ -12,7 +12,7 @@ public interface MemberRepository {
     // Must implemented Functions
 
     Member save(Member member);
-    Optional<Member> findByID(Long id);
+    Optional<Member> findById(Long id);
     Optional<Member> findByName(String name);
     List<Member> findAll();
 }
